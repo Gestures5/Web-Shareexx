@@ -3,52 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NGL Spam</title>
+    <title>TOOLKIT HUB</title>
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32">
     <link rel="stylesheet" href="styles.css">
-    <!-- Add moment.js and moment-timezone -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>NGL Spammer WebTool</h1>
-        
-        <form id="spamForm">
-            <label for="username">Ngl Username:</label>
-            <input type="text"class="form-control" placeholder="Ex: chnyy24" style="font-size: 18px; color:blue" id="username" required>
-            
-            <label for="message">Message:</label>
-            <input type="text"class="form-control" placeholder="Ex: i love you" style="font-size: 18px; color:red" id="message" required>
-            
-            <label for="total">Total Amount:</label>
-            <input type="number"clss="form-control" placeholder="Ex: 20" style="font-size: 18px; color: indigo" id="total" min="1" required>
-            
-            <button type="submit" id="submitBtn">🚀 Submit</button>
-        </form>
-        <div id="response"></div>
+    <div class="background-effects" id="background-effects"></div>
+    <div class="wrapper">
+        <header class="main-header">
+            SIMPLE WEB TOOLS
+        </header>
+
+        <main class="tool-list">
+            <div class="tool-item">
+                <h2 class="tool-title">API Tester</h2>
+                <p class="tool-description">Quickly test your APIs with this tool.</p>
+                <a href="api_tester.html" class="tool-link" target="_blank">Try API Tester</a>
+            </div>
+            <div class="tool-item">
+                <h2 class="tool-title">Code Formatter</h2>
+                <p class="tool-description">Format and beautify your code.</p>
+                <a href="code_formatter.html" class="tool-link" target="_blank">Format Now</a>
+            </div>
+            <div class="tool-item">
+                <h2 class="tool-title">Email Validator</h2>
+                <p class="tool-description">Check if email addresses are valid.</p>
+                <a href="https://pornhub.com" class="tool-link" target="_blank">Validate Emails</a>
+            </div>
+        </main>
+
+        <section class="current-time">
+            <p id="current-time"></p>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2024 | All Rights Reserved.</p>
+            <a href="https://facebook.com/zuck" target="_blank" class="social-link">Developer</a>
+        </footer>
     </div>
 
-<div class="status">
-    <p id="time"></p>
-    <p id="battery"></p>
-    <p id="ping"></p>
-</div>
-
-    <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-        <div class="snowflake">❄</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-        <div class="snowflake">❄</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-        <div class="snowflake">❄</div>
+    <div class="popup" id="popup">
+       
+        <button onclick="closePopup()">Get Started</button>
     </div>
-<audio autoplay loop>
-        <source src="https://i.imgur.com/JBhnpET.mp4" type="audio/mp4">
-        Your browser does not support the audio element.
-    </audio>
-    <script src="script.js"></script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
