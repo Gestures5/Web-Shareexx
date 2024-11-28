@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Token & Cookie Getter</title>
+    <link rel="icon" href="https://i.ibb.co/Sw36c4f/24efcade947113a0fd71402e84ff1f24.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.ibb.co/QYPqXxF/0c9bbd541df8df697b8995deda24bcd1.gif'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #00ff00;
+            color: #333;
+            padding: 24px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: black;
+            opacity: 0.5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+            color: #444;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 2px;
+            font-weight: bold;
+            background-color: black;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: 3px solid black;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: black;
+            color: blue;
+            border: solid blue;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: royalblue;
+        }
+
+        .result {
+            position: relative;
+            width: 97%;
+            max-width: 700px;
+            padding: 20px;
+            background: linear-gradient(270deg, #4a90e2, #86c5da);
+            opacity: 0.5;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            font-size: 12px;
+            color: #fff;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0.2;
+            }
+        }
+
+        .snowflake:nth-child(1) { left: 5%; animation-duration: 4s; }
+        .snowflake:nth-child(2) { left: 10%; animation-duration: 6s; font-size: 14px; }
+        .snowflake:nth-child(3) { left: 20%; animation-duration: 5s; font-size: 10px; }
+        .snowflake:nth-child(4) { left: 30%; animation-duration: 7s; }
+        .snowflake:nth-child(5) { left: 40%; animation-duration: 5s; font-size: 12px; }
+        .snowflake:nth-child(6) { left: 50%; animation-duration: 4s; font-size: 16px; }
+        .snowflake:nth-child(7) { left: 60%; animation-duration: 6s; font-size: 14px; }
+        .snowflake:nth-child(8) { left: 70%; animation-duration: 5s; }
+        .snowflake:nth-child(9) { left: 80%; animation-duration: 7s; font-size: 10px; }
+        .snowflake:nth-child(10) { left: 90%; animation-duration: 4s; font-size: 12px; }
+
+        .fetch-button {
+            margin: 10px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: transparent;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+            font-weight: bold;
+        }
+
+        .copy-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background-color: #218838;
+        }
+
+        .info {
+            margin-top: 20px;
+            text-align: center;
+            background-color: lightsteelblue;
+            border-radius: 8px;
+        }
+
+        .info div {
+            margin: 10px 0;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Token and Cookie Getter</h1>
+        <form id="chilkiForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" class="form-control" placeholder="Email/Uid/Number" style="font-size: 18px; color:blue" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" placeholder="Password" style="font-size: 18px; color:red" id="password" name="password" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="info">
+            <div id="timeZone">
+                <i class="fas fa-clock"></i>
+                <span id="timeZoneDisplay">: Loading...</span>
+            </div>
+            <div id="batteryStatus">
+                <i class="fas fa-battery-half"></i>
+                <span id="batteryDisplay">Battery: Loading...</span>
+            </div>
+            <div id="pingCheck">
+                <i class="fas fa-wifi"></i>
+                <span id="pingDisplay">Ping: Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="result" id="result">
+            <p>Token & Cookies result here.</p>
+        </div>
+    </div>
+
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        document.getElementById('chilkiForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('result');
+
+            resultDiv.innerHTML = '<p class="animate__animated animate__flash"> ⏳ Retrieving token and cookie, please wait...</p>';
+
+            try {
+                const response = await axios.get(`https://markdevs-last-api-2epw.onrender.com/api/token&cookie?username=${username}&password=${password}`);
+                const { access_token_eaad6v7: token, access_token: token2, cookies: cookie } = response.data.data;
+
+                resultDiv.innerHTML = `
+                    <div class="animate__animated animate__zoomIn">
+                        <h4>Your Token:</h4>
+                        <p><strong>Token: </strong><span id="token">${token}</span></p>
+                        <p><strong>Token2: </strong><span id="token2">${token2}</span></p>
+                        <p><strong>Cookies: </strong><span id="cookies">${cookie}</span></p>
+                        <button class="copy-button" onclick="copyText()">Copy All</button>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = '<p>Error retrieving data. Please try again.</p>';
+            }
+        });
+
+        function copyText() {
+            const token = document.getElementById('token').innerText;
+            const token2 = document.getElementById('token2').innerText;
+            const cookie = document.getElementById('cookies').innerText;
+
+            const fullText = `Token: ${token}\nToken2: ${token2}\nCookies: ${cookie}`;
+
+            navigator.clipboard.writeText(fullText).then(() => {
+                alert('Token & Cookies copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy!');
+            });
+        }
+    </script>
+</body>
+</html>
