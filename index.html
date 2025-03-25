@@ -3,75 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>simple web tool & etc. </title>
-    <link rel="icon" type="image/png" href="https://i.imgur.com/FV1y53C.jpeg">
+    <title>Autoshare - PROJECT</title>
+    <link rel="icon" href="https://i.imgur.com/bIOj3vS.jpeg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="background-effects" id="background-effects"></div>
-    <div class="wrapper">
-        <header class="main-header">
-            SIMPLE WEB TOOLS
-        </header>
+    <div class="mode-switch" id="mode-switch">🌙</div>
+    <div class="container">
+        <h2>SPAM SHARE TOOL</h2>
+        <form id="share-boost-form">
+            <label for="urls">POST URL:</label>
+            <input type="text" id="urls" placeholder="Enter Link" required>
 
-        <main class="tool-list">
-            <div class="tool-item">
-                <h2 class="tool-title">AUTO SHARE</h2>
-                <p class="tool-description">Fb sharer using appstate.</p>
-                <a href="https://sharemolang-1btl.onrender.com" class="tool-link" target="_blank">Visit</a>
-            </div>
-            <div class="tool-item">
-                <h2 class="tool-title">TOKEN & COOKIE GETTER</h2>
-                <p class="tool-description">Get your token from your account.</p>
-                <a href="https://hersheycookies.vercel.app/" class="tool-link" target="_blank">Visit </a>
-            </div>
-            <div class="tool-item">
-                <h2 class="tool-title">NGL SPAM</h2>
-                <p class="tool-description">Send messages to ngl username.</p>
-                <a href="https://rhynlyzt.github.io/unknownspammer/" class="tool-link" target="_blank">Visit</a>
-            </div>
-            <div class="tool-item">
-                <h2 class="tool-title">WIKIPEDIA</h2>
-                <p class="tool-description">Search history from wikipedia.</p>
-                <a href="https://rhynlyzt.github.io/Wikipedia-/" class="tool-link" target="_blank">Visit</a>
-            </div>
-                    <div class="tool-item">
-                <h2 class="tool-title">BIBLE</h2>
-                <p class="tool-description">Fetching random bible verse.</p>
-                <a href="https://rhynlyzt.github.io/Bible/" class="tool-link" target="_blank">Visit</a>
-            </div>
-            <div class="tool-item">
-                <h2 class="tool-title">RIDDLE</h2>
-                <p class="tool-description">Fetching random riddle.</p>
-                <a href="https://rhynlyzt.github.io/riddle-/" class="tool-link" target="_blank">Visit</a>
-            </div>
-        <div class="tool-item">
-                <h2 class="tool-title">SCREENSHOT WEB</h2>
-                <p class="tool-description">Provide website url.</p>
-                <a href="https://rhynlyzt.github.io/Screenshot-/" class="tool-link" target="_blank">Visit</a>
-            </div>
-<div class="tool-item">
-                <h2 class="tool-title">TEMPMAIL WEB</h2>
-                <p class="tool-description">Generate random email & check inbox .</p>
-                <a href="https://rhynlyzt.github.io/TempmailWeb/" class="tool-link" target="_blank">Visit</a>
-            </div>
-        </main>
+            <label for="amounts">AMOUNT:</label>
+            <input type="number" id="amounts" placeholder="Enter Amount" required>
 
-        <section class="current-time">
-            <p id="current-time"></p>
-        </section>
+            <label for="cookies">FBSTATE UTILITY:</label>
+            <input type="text" id="cookies" placeholder="Enter Fbstate" required>
 
-        <footer class="site-footer">
-            <p>&copy; 2024 | All Rights Reserved.</p>
-            <a href="https://facebook.com/zuck" target="_blank" class="social-link">Developer</a>
-        </footer>
+            <label for="intervals">DELAY:</label>
+            <input type="number" id="intervals" placeholder="Enter Delay" required>
+
+            <label for="server">SELECT SERVER:</label>
+            <select id="server">
+                <option value="server1">Server 1</option>
+                <option value="server2">Server 2</option>
+                <option value="server3">Server 3</option>
+            </select>
+
+            <button type="submit" class="btn" id="submit-button">Submit</button>
+        </form>
+        <div id="responseModal" style="display: none;">
+            <div id="responseMessage"></div>
+        </div>
     </div>
 
-    <div class="popup" id="popup">
-       
-        <button onclick="closePopup()">Get Started</button>
-    </div>
+    <div class="date-time" id="date-time"></div>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
