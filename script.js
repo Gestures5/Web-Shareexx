@@ -36,7 +36,7 @@ document.getElementById('share-boost-form').onsubmit = async function (event) {
     const interval = parseInt(document.getElementById('intervals').value);
     const serverValue = document.getElementById('server').value;
 
-    message.textContent = 'Submitted successfully✅';
+    message.textContent = 'Submitted successfully, check your url now!!';
     modal.style.display = 'flex';
 
     try {
