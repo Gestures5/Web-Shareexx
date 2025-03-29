@@ -36,38 +36,28 @@ document.getElementById('share-boost-form').onsubmit = async function (event) {
     const interval = parseInt(document.getElementById('intervals').value);
     const serverValue = document.getElementById('server').value;
 
-    message.textContent = 'Submitted successfully, check your url now!!';
+    message.textContent = 'Processing your request, please wait...';
     modal.style.display = 'flex';
 
     try {
         const server = serverUrls[serverValue];
         const response = await fetch(`${server}/api/submit`, {
             method: 'POST',
-            body: JSON.stringify({
-                cookie: cookie,
-                url: url,
-                amount: amount,
-                interval: interval,
-            }),
-            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cookie, url, amount, interval }),
+            headers: { 'Content-Type': 'application/json' }
         });
 
         const data = await response.json();
 
         if (data.status === 200) {
-            message.textContent = 'Submitted successfully';
-            message.className = 'result success';
+            message.textContent = 'Your request was submitted successfully!';
         } else {
             message.textContent = `Error: ${data.message}`;
-            message.className = 'result error';
         }
     } catch (error) {
         message.textContent = 'Network error, please try again.';
-        message.className = 'result error';
     } finally {
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 3000);
+        setTimeout(() => modal.style.display = 'none', 3000);
     }
 };
 
@@ -89,7 +79,22 @@ document.getElementById('mode-switch').addEventListener('click', toggleDarkMode)
 
 setInterval(updateDateTime, 1000);
 
+async function fetchCatFact() {
+    const display = document.getElementById('catfact-text');
+    display.textContent = 'Fetching cat fact...';
+    try {
+        const response = await fetch('https://catfact.ninja/fact');
+        const data = await response.json();
+        display.textContent = data.fact || 'Could not fetch a cat fact.';
+    } catch {
+        display.textContent = 'An error occurred. Please try again.';
+    }
+}
+
+document.getElementById('fetch-catfact-button').addEventListener('click', fetchCatFact);
+
 window.onload = () => {
     checkServerStatus();
     updateDateTime();
+    fetchCatFact();
 };
