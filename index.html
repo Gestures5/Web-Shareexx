@@ -3,39 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoshare - PROJECT</title>
+    <title>Autoshare - Hershey PROJECT</title>
     <link rel="icon" href="https://i.imgur.com/bIOj3vS.jpeg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="mode-switch" id="mode-switch">🌙</div>
+    <!-- SPAM SHARE TOOL CONTAINER -->
     <div class="container">
+        <div class="mode-switch" id="mode-switch">🌙</div>
         <h2>SPAM SHARE TOOL</h2>
         <form id="share-boost-form">
             <label for="urls">POST URL:</label>
-            <input type="text" id="urls" placeholder="Enter Link" required>
-
+            <input type="text" id="urls" placeholder="Enter Link" required />
             <label for="amounts">AMOUNT:</label>
-            <input type="number" id="amounts" placeholder="Enter Amount" required>
-
+            <input type="number" id="amounts" placeholder="Enter Amount" required />
             <label for="cookies">FBSTATE UTILITY:</label>
-            <input type="text" id="cookies" placeholder="Enter Fbstate" required>
-
+            <input type="text" id="cookies" placeholder="Enter Fbstate" required />
             <label for="intervals">DELAY (1):</label>
-            <input type="number" id="intervals" placeholder="Enter Delay" required>
-
+            <input type="number" id="intervals" placeholder="Enter Delay" required />
             <label for="server">SELECT SERVER:</label>
             <select id="server">
                 <option value="server1">Server 1</option>
                 <option value="server2">Server 2</option>
                 <option value="server3">Server 3</option>
             </select>
-
             <button type="submit" class="btn" id="submit-button">Submit</button>
         </form>
-        <div id="responseModal" style="display: none;">
+        <div id="responseModal" class="response-modal">
             <div id="responseMessage"></div>
         </div>
+    </div>
+
+    <!-- RANDOM CAT FACT CONTAINER -->
+    <div class="container">
+        <h2>Random Cat Facts 🐱</h2>
+        <div id="catfact-display" class="catfact-display">
+            <i class="fas fa-cat"></i>
+            <span id="catfact-text">Fetching cat fact...</span>
+        </div>
+        <button class="btn" id="fetch-catfact-button">
+            <i class="fas fa-sync-alt"></i> Refresh Cat Fact
+        </button>
     </div>
 
     <div class="date-time" id="date-time"></div>
