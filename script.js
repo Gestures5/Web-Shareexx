@@ -1,7 +1,7 @@
 const serverUrls = {
-    server1: 'https://server2-u8y4.onrender.com',
-    server2: 'https://burat-rvhg.onrender.com',
-    server3: 'https://server1-qmqz.onrender.com'
+    server1: 'https://server1-u9fw.onrender.com',
+    server2: 'https://server-2-aggj.onrender.com',
+    server3: 'https://server-3-p6lg.onrender.com'
 };
 
 async function checkServerStatus() {
