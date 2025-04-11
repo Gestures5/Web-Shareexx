@@ -1,7 +1,7 @@
 const serverUrls = {
     server1: 'https://server404-1.onrender.com',
-    server2: 'https://server-2-aggj.onrender.com',
-    server3: 'https://server-3-p6lg.onrender.com'
+    server2: 'https://server404-2.onrender.com',
+    server3: 'https://server404-3.onrender.com'
 };
 
 async function checkServerStatus() {
